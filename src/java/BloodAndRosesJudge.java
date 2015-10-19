@@ -1,21 +1,16 @@
-import jdk.internal.util.xml.impl.Input;
+package java;
 
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Enumeration;
-import java.util.Scanner;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 public class BloodAndRosesJudge {
     private File file;
-    private Thread enemyThread;
-    private PipedInputStream inputStream;
-    private PipedOutputStream outputStream;
 
     public BloodAndRosesJudge(File file) {
         this.file = file;
@@ -30,11 +25,7 @@ public class BloodAndRosesJudge {
 
         } catch (NoSuchMethodException e) {
             System.err.println("No main method was found");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
     }
@@ -48,9 +39,7 @@ public class BloodAndRosesJudge {
             if (element.getName().endsWith(".class")) {
 
                 //Load the class In the Jar File.
-                String className = element.getName();
-                className.replaceAll(".class", "");
-                className.replaceAll("/", ".");
+                String className = element.getName().replaceAll(".class", "").replaceAll("/", ".");
 
                 Class<?> driverClass = classLoader.loadClass(className);
 
@@ -61,12 +50,11 @@ public class BloodAndRosesJudge {
                         mainCalled = true;
                         Method mainMethod = driverClass.getMethod("main", String[].class);
 
-                        enemyThread = new Thread(() -> {
+                        Thread enemyThread = new Thread(() -> {
                             try {
                                 mainMethod.invoke(null, (Object) new String[1]);
-                            } catch (IllegalAccessException e) {
-                                e.printStackTrace();
-                            } catch (InvocationTargetException e) {
+                            }
+                            catch (IllegalAccessException | InvocationTargetException e) {
                                 e.printStackTrace();
                             }
                         });
@@ -79,8 +67,8 @@ public class BloodAndRosesJudge {
     }
 
     private void setSystemStreams() throws IOException {
-        outputStream = new PipedOutputStream();
-        inputStream = new PipedInputStream(outputStream);
+        PipedOutputStream outputStream = new PipedOutputStream();
+        PipedInputStream inputStream = new PipedInputStream(outputStream);
         PrintStream ps = new PrintStream(outputStream);
 
         System.setOut(ps);
