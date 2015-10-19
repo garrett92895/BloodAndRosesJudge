@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="78afb20b-c3b6-4806-b874-7d145674c3b2" name="Default" comment="" />
+    <list default="true" id="78afb20b-c3b6-4806-b874-7d145674c3b2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BloodAndRosesJudge.java" afterPath="$PROJECT_DIR$/src/BloodAndRosesJudge.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="BloodAndRosesJudge.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -22,11 +25,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="BloodAndRosesJudge.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BloodAndRosesJudge.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/BloodAndRosesJudge.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+            <state vertical-scroll-proportion="-0.7703281">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding>
+                <element signature="e#620#621#0" expanded="true" />
+                <element signature="e#652#653#0" expanded="true" />
+                <element signature="method#invokeMain#0;class#BloodAndRosesJudge#0" expanded="false" />
+                <element signature="method#setSystemStreams#0;class#BloodAndRosesJudge#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -52,10 +70,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BogoAI.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BogoAI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BogoAI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5905849">
+            <state vertical-scroll-proportion="0.0">
               <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
               <folding>
                 <element signature="e#108#109#0" expanded="true" />
@@ -90,6 +108,7 @@
         <option value="$PROJECT_DIR$/src/Decision.java" />
         <option value="$PROJECT_DIR$/src/AI.java" />
         <option value="$PROJECT_DIR$/src/BogoAI.java" />
+        <option value="$PROJECT_DIR$/src/BloodAndRosesJudge.java" />
       </list>
     </option>
   </component>
@@ -483,12 +502,12 @@
       <created>1445229535568</created>
       <option name="number" value="Default" />
       <updated>1445229535568</updated>
-      <workItem from="1445229536750" duration="479000" />
+      <workItem from="1445229536750" duration="3300000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="479000" />
+    <option name="totallyTimeSpent" value="3300000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3" y="54" width="2554" height="1543" extended-state="0" />
@@ -541,14 +560,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BloodAndRosesJudge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Decision.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -567,11 +578,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BogoAI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5905849">
+        <state vertical-scroll-proportion="0.0">
           <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
           <folding>
             <element signature="e#108#109#0" expanded="true" />
             <element signature="e#143#144#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BloodAndRosesJudge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.7703281">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding>
+            <element signature="e#620#621#0" expanded="true" />
+            <element signature="e#652#653#0" expanded="true" />
+            <element signature="method#invokeMain#0;class#BloodAndRosesJudge#0" expanded="false" />
+            <element signature="method#setSystemStreams#0;class#BloodAndRosesJudge#0" expanded="false" />
           </folding>
         </state>
       </provider>
