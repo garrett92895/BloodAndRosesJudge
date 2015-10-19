@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Enumeration;
+import java.util.Scanner;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
