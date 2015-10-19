@@ -1,0 +1,5 @@
+# Output files
+out/
+
+#IntelliJ Files
+*.iml
