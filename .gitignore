@@ -7,5 +7,5 @@ out/*
 
 #IntelliJ Files
 *.iml
-*.xml
-.idea/*
+.idea/
+*.iws
