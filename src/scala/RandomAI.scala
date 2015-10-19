@@ -7,7 +7,7 @@ import java.util.Random
  * Scala implementation of the src/java/BogoAI.java
  * Created by stephen on 10/18/15.
  */
-class RandomAI(var rand: Random = new Random()) extends AI {
+class RandomAI(var rand: Random = new Random(), val name: String = "Rando") extends AI with scalAI {
   override def getDecision: Decision =
     if (rand.nextInt(2) == 0) Decision.Blood else Decision.Rose
 
