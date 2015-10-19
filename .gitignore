@@ -1,5 +1,9 @@
 # Output files
-out/
+out/*
+
+# binary
+*.jar
+*.class
 
 #IntelliJ Files
 *.iml

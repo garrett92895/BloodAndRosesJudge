@@ -30,24 +30,29 @@ public class BloodAndRosesJudge {
 
         } catch (NoSuchMethodException e) {
             System.err.println("No main method was found");
-        } catch (InvocationTargetException e) {
-        } catch (IOException e) {
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void invokeMain(JarFile jar, URLClassLoader classLoader) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    private void invokeMain(JarFile jar, URLClassLoader classLoader) throws ClassNotFoundException, NoSuchMethodException {
         Enumeration<JarEntry> entries = jar.entries();
+
         while (entries.hasMoreElements()) {
             JarEntry element = entries.nextElement();
+
             if (element.getName().endsWith(".class")) {
+
                 //Load the class In the Jar File.
-                Class<?> driverClass = classLoader.loadClass(element.getName().replaceAll(".class", "").replaceAll("/", "."));
+                String className = element.getName();
+                className.replaceAll(".class", "");
+                className.replaceAll("/", ".");
+
+                Class<?> driverClass = classLoader.loadClass(className);
 
                 //Check all methods for main.
                 boolean mainCalled = false;
@@ -56,17 +61,16 @@ public class BloodAndRosesJudge {
                         mainCalled = true;
                         Method mainMethod = driverClass.getMethod("main", String[].class);
 
-                        enemyThread = new Thread() {
-                            public void run() {
-                                try {
-                                    mainMethod.invoke(null, (Object) new String[1]);
-                                } catch (IllegalAccessException e) {
-                                    e.printStackTrace();
-                                } catch (InvocationTargetException e) {
-                                    e.printStackTrace();
-                                }
+                        enemyThread = new Thread(() -> {
+                            try {
+                                mainMethod.invoke(null, (Object) new String[1]);
+                            } catch (IllegalAccessException e) {
+                                e.printStackTrace();
+                            } catch (InvocationTargetException e) {
+                                e.printStackTrace();
                             }
-                        };
+                        });
+
                         enemyThread.start();
                     }
                 }
