@@ -10,6 +10,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 public class BloodAndRosesJudge {
+    private static final int NUM_OF_GAMES = 50;
     private File file;
 
     public BloodAndRosesJudge(File file) {
@@ -22,12 +23,100 @@ public class BloodAndRosesJudge {
             URLClassLoader classLoader = new URLClassLoader(new URL[]{file.toURL()});
             this.invokeMain(jar, classLoader);
             this.setSystemStreams();
+            this.runSimulation();
 
         } catch (NoSuchMethodException e) {
             System.err.println("No main method was found");
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void runSimulation() {
+        int gamesRemaining = NUM_OF_GAMES;
+        int gamesEnemyWon = 0;
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("startSimulation");
+
+        for(int i = gamesRemaining; i >= 0; i--) {
+            System.out.println("startGame");
+
+            String result = "loss";
+            if(this.runGame(scan)) {
+                ++gamesEnemyWon;
+                result = "win";
+            }
+
+            System.out.println("endGame," + result);
+        }
+
+        int percentageEnemyWon = (int) Math.floor(gamesEnemyWon / NUM_OF_GAMES);
+
+        System.out.println("endSimulation," + percentageEnemyWon);
+    }
+
+    //Returns if enemy won game
+    private boolean runGame(Scanner scan) {
+        AI ai = this.chooseAI();
+        String name = this.chooseName();
+        int resourcePoints = 70;
+        int enemyResourcePoints = 70;
+
+        while(resourcePoints > 0 && enemyResourcePoints > 0) {
+            System.out.println("conflictInitiation," + name);
+            Decision decision = ai.getDecision();
+            Decision enemyDecision = this.parseDecision(scan.nextLine());
+
+            String result = "blood";
+            if(decision.equals(Decision.Blood)) {
+                if(enemyDecision.equals(Decision.Blood)) {
+                    resourcePoints -= 2;
+                    enemyResourcePoints -= 2;
+                }else if(enemyDecision.equals(Decision.Rose)) {
+                    enemyResourcePoints -= 3;
+                }
+            } else if(decision.equals(Decision.Rose)) {
+                result = "rose";
+                if(enemyDecision.equals(Decision.Blood)) {
+                    resourcePoints -= 3;
+                }else if(enemyDecision.equals(Decision.Rose)) {
+                    resourcePoints -= 1;
+                    enemyResourcePoints -= 1;
+                }
+            }
+            System.out.println("conflictResult," + name + "," + result);
+        }
+
+        boolean gameResult = true;
+        if(enemyResourcePoints < 0) {
+            gameResult = false;
+        }
+
+        return gameResult;
+    }
+
+    private Decision parseDecision(String decision) {
+        Decision parsedDecision = null;
+
+        if("blood".equals(decision.toLowerCase())) {
+            parsedDecision = Decision.Blood;
+        }
+        else if("rose".equals(decision.toLowerCase())) {
+            parsedDecision = Decision.Rose;
+        }
+
+        return parsedDecision;
+    }
+
+    private AI chooseAI() {
+        //TODO
+        return new BogoAI();
+    }
+
+    private String chooseName() {
+        //TODO
+        return "player1";
     }
 
     private void invokeMain(JarFile jar, URLClassLoader classLoader) throws ClassNotFoundException, NoSuchMethodException {
